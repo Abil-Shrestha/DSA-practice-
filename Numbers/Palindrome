@@ -1,0 +1,18 @@
+//Leetcode 9. Palindrome Check Without converting to string (Easy)
+const isPalindrome = (x) => {
+   let num = Math.abs(x);
+    let lastDigit = 0;
+    let reversed = 0;
+    while(num != 0){
+        lastDigit= num %10;
+        reversed = reversed*10+lastDigit;
+        num = Math.floor(num/10);
+    }
+    if(x<0){
+        return false;
+    } else if(reversed === x){
+        return true;
+    } else {
+        return false;
+    }
+};
