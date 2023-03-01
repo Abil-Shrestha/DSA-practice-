@@ -27,4 +27,4 @@ var longestPalindrome = function(s) {
         }
     }
     return s.substr(start,maxLength)
-};
+}; 
