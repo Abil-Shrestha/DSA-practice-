@@ -7,6 +7,7 @@ private:
     int _size;
     int _cap;
     int* arr;
+    string vectorname;
 
 public:
     Vec()
