@@ -15,7 +15,7 @@ public:
         _cap = 10;
         arr = new int[_cap];
     }
-
+  
     void insert(int n, int j)
     {
 
