@@ -192,3 +192,15 @@ int bfs(TreeNode* root) {
     dfs(root.right);
     return ans;
 }
+
+
+//Caclulate Height of a tree
+int height(Node* root) {
+        if (root == NULL)
+        return -1;
+        else{
+            int lh = height(root->left) + 1;
+            int rh = height(root->right) + 1;
+            return rh >= lh ? rh : lh;
+        }
+    }
