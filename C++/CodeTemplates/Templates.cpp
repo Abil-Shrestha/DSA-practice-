@@ -204,3 +204,28 @@ int height(Node* root) {
             return rh >= lh ? rh : lh;
         }
     }
+
+//Top view of a tree
+void topView(struct Node *root)
+{
+    if(root == NULL)
+        return;
+    queue<pair<Node*, int>> q;
+    map<int, int> m;
+    q.push(make_pair(root, 0));
+    while(!q.empty())
+    {
+        pair<Node*, int> p = q.front();
+        Node* n = p.first;
+        int h = p.second;
+        q.pop();
+        if(m.find(h) == m.end())
+            m[h] = n->data;
+        if(n->left != NULL)
+            q.push(make_pair(n->left, h-1));
+        if(n->right != NULL)
+            q.push(make_pair(n->right, h+1));
+    }
+    for(auto it = m.begin(); it != m.end(); it++)
+        cout << it->second << " ";
+}
