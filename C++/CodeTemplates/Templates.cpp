@@ -229,3 +229,17 @@ void topView(struct Node *root)
     for(auto it = m.begin(); it != m.end(); it++)
         cout << it->second << " ";
 }
+
+//Level order Traversal
+void levelOrder(Node * root) {
+        if (root == nullptr) return;
+        queue<Node*> q;
+        q.push(root);
+        while(!q.empty()){
+            Node* c = q.front();
+            cout<<c->data<<" ";
+            if(c->left != nullptr)q.push(c->left);
+            if(c->right != nullptr)q.push(c->right);
+            q.pop();
+        }
+    }
