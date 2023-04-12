@@ -268,3 +268,19 @@ void levelOrder(Node * root) {
             heapify(arr, n, largest);  
         }  
     }
+
+    // graph sort
+    void topologicalSortUtil(int v, bool visited[], stack<int> &Stack)  
+    {  
+        // Mark the current node as visited.  
+        visited[v] = true;  
+      
+        // Recur for all the vertices adjacent to this vertex  
+        list<int>::iterator i;  
+        for (i = adj[v].begin(); i != adj[v].end(); ++i)  
+            if (!visited[*i])  
+                topologicalSortUtil(*i, visited, Stack);  
+      
+        // Push current vertex to stack which stores result  
+        Stack.push(v);  
+    }
