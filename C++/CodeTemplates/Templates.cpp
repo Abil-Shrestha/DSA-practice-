@@ -284,3 +284,41 @@ void levelOrder(Node * root) {
         // Push current vertex to stack which stores result  
         Stack.push(v);  
     }
+
+    //graph insert 
+    void Graph::addEdge(int v, int w)  
+    {  
+        adj[v].push_back(w); // Add w to v’s list.  
+    } 
+
+    //leetcode graph
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<int> ans;
+        vector<vector<int>> graph(numCourses);
+        vector<int> indegree(numCourses, 0);
+        for (auto& p : prerequisites) {
+            graph[p[1]].push_back(p[0]);
+            indegree[p[0]]++;
+        }
+        queue<int> q;
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                q.push(i);
+            }
+        }
+        while (!q.empty()) {
+            int curr = q.front();
+            q.pop();
+            ans.push_back(curr);
+            for (int next : graph[curr]) {
+                indegree[next]--;
+                if (indegree[next] == 0) {
+                    q.push(next);
+                }
+            }
+        }
+        if (ans.size() != numCourses) {
+            return {};
+        }
+        return ans;
+    }
