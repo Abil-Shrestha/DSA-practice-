@@ -322,3 +322,20 @@ void levelOrder(Node * root) {
         }
         return ans;
     }
+
+    //fibonacci heap
+    void FibonacciHeap::insert(int data) {
+        Node* node = new Node(data);
+        if (min == nullptr) {
+            min = node;
+        } else {
+            node->left = min;
+            node->right = min->right;
+            min->right = node;
+            node->right->left = node;
+            if (node->data < min->data) {
+                min = node;
+            }
+        }
+        size++;
+    }
